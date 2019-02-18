@@ -10,8 +10,8 @@ class CartItem extends Component {
                 <div>
                     <h6 className="my-0">{this.props.data["name"] + ' (' + this.props.data["amount"] + ')'}</h6>
                     <small className="text-muted">{this.props.data["type"]}</small>
-                    </div>
-                    <span className="text-muted">{this.props.data["price"]}</span>
+                </div>
+                <span className="text-muted">{this.props.data["price"]}</span>
             </li>
         )
     };
