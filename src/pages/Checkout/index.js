@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Form from './form';
-import Cart from './cart';
 // const axios = require('axios');
 
 class Checkout extends Component {
@@ -82,8 +81,6 @@ class Checkout extends Component {
           <div className="row">
 
             <Form />
-
-            <Cart />
 
           </div>
 

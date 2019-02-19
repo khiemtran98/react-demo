@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class Product extends Component {
-    constructor(props) {
-        super(props);
-    };
     render() {
         let url = "/products?id=" + this.props.data["id"];
         return (

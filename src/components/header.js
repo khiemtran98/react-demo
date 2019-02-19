@@ -20,7 +20,7 @@ class Header extends Component {
         let result = 0;
         if (data !== null) {
             data.forEach(element => {
-                result += parseInt(element.amount);
+                result += parseInt(element.quantity);
             });
             this.setState({
                 shoppingCart: result
@@ -63,7 +63,7 @@ class Header extends Component {
 
                         <ul className="navbar-nav nav-flex-icons">
                             <li className="nav-item">
-                                <a className="nav-link waves-effect" href="/checkout">
+                                <a className="nav-link waves-effect" href="/cart">
                                     <span className="badge red z-depth-1 mr-1">{this.state.shoppingCart}</span>
                                     <i className="fas fa-shopping-cart"></i>
                                     <span className="clearfix d-none d-sm-inline-block"> Giỏ hàng </span>

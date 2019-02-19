@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => (
   <footer className="page-footer text-center font-small mt-4 wow fadeIn">
 
-    <div className="pt-4">
+    {/* <div className="pt-4">
       <a className="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
         role="button">Download MDB
         <i className="fas fa-download ml-2"></i>
@@ -12,9 +12,9 @@ const Footer = () => (
         free tutorial
         <i className="fas fa-graduation-cap ml-2"></i>
       </a>
-    </div>
+    </div> */}
 
-    <hr className="my-4"/>
+    <hr className="my-4" />
 
     <div className="pb-4">
       <a href="https://www.facebook.com/mdbootstrap" target="_blank">
@@ -52,7 +52,7 @@ const Footer = () => (
 
     <div className="footer-copyright py-3">
       © 2018 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+      {/* <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a> */}
     </div>
 
   </footer>
