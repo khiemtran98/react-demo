@@ -37,13 +37,6 @@ class CartContainer extends React.Component {
         return productQuantity;
     }
 
-    deleteCart() {
-        localStorage.clear();
-        this.setState({
-            cart: []
-        })
-    }
-
     checkout() {
 
     }
@@ -51,7 +44,12 @@ class CartContainer extends React.Component {
     render() {
         const totalAmount = this.calculateTotal(this.state.cart);
         const totalQuantity = this.calculateTotalQuantity(this.state.cart);
-        return <Cart totalQuantity={totalQuantity} totalAmount={totalAmount} cart={this.state.cart} onSubmit={() => {
+        return <Cart totalQuantity={totalQuantity} totalAmount={totalAmount} cart={this.state.cart} deleteCart={(e) => {
+            localStorage.clear();
+            this.setState({
+                cart: []
+            })
+        }} onSubmit={() => {
             this.checkout()
         }} />
     }

@@ -7,6 +7,7 @@ const Cart = ({
     totalQuantity,
     cart,
     totalAmount,
+    deleteCart,
     onSubmit
 }) => {
     return (
@@ -16,7 +17,7 @@ const Cart = ({
                 <div className="my-5 h2 text-center"></div>
                 <div className="col-md-12 mb-4"> {/* root */}
                     <CartHeader totalQuantity={totalQuantity} />
-                    <CartItems cart={cart} />
+                    <CartItems cart={cart} deleteCart={deleteCart} />
                     <Submition totalAmount={totalAmount} onSubmit={onSubmit} />
                 </div>
 

@@ -11,13 +11,13 @@ class CartItem extends Component {
                             <small className="text-muted">{this.props.data["type"]}</small>
                         </div>
                         <div className="col md-auto" style={{ margin: 'auto' }}>
-                            <input type="number" value={this.props.data["amount"]} style={{ width: 50 }} />
+                            <input type="number" value={this.props.data["quantity"]} style={{ width: 50 }} />
                         </div>
                         <div className="col col-lg-1" style={{ margin: 'auto' }}>
                             <span className="text-muted">{this.props.data["price"]}</span>
                         </div>
                         <div className="col col-lg-1" style={{ margin: 'auto' }}>
-                            <button className="btn-danger"></button>
+                            <button className="btn-danger" onClick={this.props.deleteCart}></button>
                         </div>
                     </div>
                 </div>
