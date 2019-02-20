@@ -47,7 +47,7 @@ class Home extends Component {
       <main style={{ marginTop: 70 }}>
         <div className="container">
           <Navbar />
-          <Control onSort={this.onSort} sortBy={sortBy} sortValue={sortValue} />
+          <Control onSort={this.onSort} sortBy={sortBy} sortValue={sortValue}  />
           <section className="text-center mb-4">
             <div id="product" className="row wow fadeIn">
               {element}

@@ -4,7 +4,7 @@ class Sort extends Component {
     return (
       <div>
         <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <div className="dropdown-list">
+          <div className="dropdown">
             <button type="button" className="btn btn-sm btn-success" onClick={() =>this.props.onClick('name',1) }>
               A - Z
             </button>
@@ -12,10 +12,10 @@ class Sort extends Component {
               Z - A
             </button>
             <button type="button" className="btn btn-sm btn-success" onClick={() =>this.props.onClick('price',1) }>
-              0$ - 999$
+              0$ -> 9$
             </button>
             <button type="button" className="btn btn-sm btn-success" onClick={() =>this.props.onClick('price',-1) }>
-              999$ - 0$
+              9$ -> 0$
             </button>
           </div>
         </div>
