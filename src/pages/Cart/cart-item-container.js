@@ -1,11 +1,11 @@
 import React from 'react';
 import CartItem from './cart-item';
 
-const CartItemContainer = ({ cart, deleteCart }) => {
+const CartItemContainer = ({ cart, onItemsChanged }) => {
     let cartItems = [];
     if (cart.length > 0) {
         cart.forEach(element => {
-            cartItems.push(<CartItem data={element} deleteCart={deleteCart} />)
+            cartItems.push(<CartItem data={element} onItemsChanged={onItemsChanged} />)
         });
     }
 

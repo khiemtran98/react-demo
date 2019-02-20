@@ -10,13 +10,17 @@ class CartContainer extends React.Component {
         }
     };
 
-    componentWillMount() {
+    loadData() {
         const cart = getCart();
         if (cart !== null) {
             this.setState({
                 cart
             });
         }
+    }
+
+    componentWillMount() {
+        this.loadData();
     }
 
     calculateTotal(cart) {
@@ -41,17 +45,23 @@ class CartContainer extends React.Component {
 
     }
 
+    handleItemsChanged() {
+        // TODO: refresh component
+        // reload data from storage
+        // update cart in state
+        this.loadData();
+    }
+
     render() {
         const totalAmount = this.calculateTotal(this.state.cart);
         const totalQuantity = this.calculateTotalQuantity(this.state.cart);
-        return <Cart totalQuantity={totalQuantity} totalAmount={totalAmount} cart={this.state.cart} deleteCart={(e) => {
-            localStorage.clear();
-            this.setState({
-                cart: []
-            })
-        }} onSubmit={() => {
-            this.checkout()
-        }} />
+        return <Cart totalQuantity={totalQuantity}
+            totalAmount={totalAmount}
+            cart={this.state.cart}
+            onSubmit={() => {
+                this.checkout()
+            }}
+            onItemsChanged={() => this.handleItemsChanged()} />
     }
 }
 

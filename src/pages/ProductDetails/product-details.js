@@ -41,9 +41,12 @@ const ProductDetails = ({ product, setQuantity, addToCart }) => {
                         sint voluptatibus!
                                 Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
 
-                        <form className="d-flex justify-content-left" action="/cart">
+                        <form className="d-flex justify-content-left">
                             <input type="number" defaultValue='1' aria-label="Search" className="form-control" style={{ width: 100 }} onChange={setQuantity} />
-                            <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={addToCart}>Add to cart
+                            <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={(e) => {
+                                addToCart();
+                                e.preventDefault();
+                            }}>Add to cart
                                     <i className="fas fa-shopping-cart ml-1"></i>
                             </button>
 
@@ -60,7 +63,7 @@ const ProductDetails = ({ product, setQuantity, addToCart }) => {
             <RelatedProducts />
 
         </div>
-    </main>
+    </main >
 };
 
 export default ProductDetails;

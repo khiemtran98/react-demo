@@ -11,7 +11,7 @@ class Home extends Component {
             products.push(<Product data={element} />)
         });
         return (
-            <main style={{ marginTop: 70 }}>
+            <main style={{ marginTop: 100 }}>
                 <div className="container">
                     <Navbar />
                     <section className="text-center mb-4">

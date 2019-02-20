@@ -1,29 +1,43 @@
 import React, { Component } from 'react';
+import { Navbar, Nav, Button, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 
 class Product extends Component {
     render() {
         let url = "/products?id=" + this.props.data["id"];
         return (
-            <div class="col-lg-3 col-md-6 mb-4">
+            <div className="col-lg-3 col-md-6 mb-4">
                 <div className="card">
 
                     <div className="view overlay">
                         <img src={this.props.data["img-url"]} className="card-img-top"
                             alt="" />
-                        <a href={url}>
+                        <LinkContainer to={url}>
                             <div className="mask rgba-white-slight"></div>
-                        </a>
+                        </LinkContainer>
+                        {/* <a href={url}> */}
+                        {/* <div className="mask rgba-white-slight"></div> */}
+                        {/* </a> */}
                     </div>
 
                     <div className="card-body text-center">
-                        <a href={url} className="grey-text">
+                        {/* <a href={url} className="grey-text">
                             <h5>{this.props.data["type"]}</h5>
-                        </a>
+                        </a> */}
+                        <LinkContainer to={url} className="grey-text">
+                            <h5>{this.props.data["type"]}</h5>
+                        </LinkContainer>
                         <h5>
                             <strong>
-                                <a href={url} className="dark-grey-text">{this.props.data["name"]}
+                                {/* <a href={url} className="dark-grey-text">{this.props.data["name"]}
                                     <span className="badge badge-pill danger-color">NEW</span>
-                                </a>
+                                </a> */}
+                                <LinkContainer to={url} className="dark-grey-text">
+                                    <NavItem>
+                                        {this.props.data["name"]}
+                                        <span className="badge badge-pill danger-color">NEW</span>
+                                    </NavItem>
+                                </LinkContainer>
                             </strong>
                         </h5>
 
