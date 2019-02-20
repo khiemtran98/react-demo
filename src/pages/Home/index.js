@@ -44,7 +44,7 @@ class Home extends Component {
       });
     }
     return (
-      <main style={{ marginTop: 70 }}>
+      <main style={{ marginTop: 100 }}>
         <div className="container">
           <Navbar />
           <Control onSort={this.onSort} sortBy={sortBy} sortValue={sortValue}  />
