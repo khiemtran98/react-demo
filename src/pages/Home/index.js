@@ -11,7 +11,7 @@ class Home extends Component {
       sortBy: "name",
       sortValue: 1,
       products: [],
-      keyword : ''
+      keyword : ""
     };
   }
   onSort = (sortBy, sortValue) => {

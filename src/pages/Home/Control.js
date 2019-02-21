@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import Sort from './Sort';
-import Search from './Search';
+import React, { Component } from "react";
+import Sort from "./Sort";
+import Search from "./Search";
 class Control extends Component {
-    onSearch=(key)=>{
-        this.props.onSearch(key);
-    }
+  onSearch = key => {
+    this.props.onSearch(key);
+  };
 
-    render() {
-        
-        return (
-            <div>
-            <Search onSearch = {this.onSearch}/>
-            <Sort onSort = {this.props.onSort}
-            sortBy = {this.props.sortBy}
-            sortValue = {this.props.sortValue}
-            />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Search onSearch={this.onSearch} />
+        <Sort
+          onSort={this.props.onSort}
+          sortBy={this.props.sortBy}
+          sortValue={this.props.sortValue}
+        />
+      </div>
+    );
+  }
 }
 
 export default Control;
