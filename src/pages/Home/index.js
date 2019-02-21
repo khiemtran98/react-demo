@@ -10,7 +10,8 @@ class Home extends Component {
     this.state = {
       sortBy: "name",
       sortValue: 1,
-      products: []
+      products: [],
+      keyword : ''
     };
   }
   onSort = (sortBy, sortValue) => {
@@ -19,16 +20,27 @@ class Home extends Component {
       sortValue: sortValue
     });
   };
+  onSearch=(keyword) =>{
+    this.setState({
+      keyword:keyword
+    });
+  }
   componentDidMount() {
     this.setState({
       products: Data
     });
   }
   render() {
-    var { sortBy, sortValue, products } = this.state;
-    let element = products.map(e => {
-      return <Product data={e} key={e.id} />;
-    });
+    var { sortBy, sortValue, products,keyword } = this.state;
+
+   
+
+    if(keyword){
+      products = products.filter((data) =>{
+        return data.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
+      }); 
+    }
+
     if (sortBy === "name") {
       products.sort((a, b) => {
         if (a.name > b.name) return sortValue;
@@ -43,11 +55,19 @@ class Home extends Component {
         else return 0;
       });
     }
+    // Data lower than function
+    let element = products.map(e => {
+      return <Product data={e} key={e.id} />;
+    });
+
     return (
       <main style={{ marginTop: 100 }}>
         <div className="container">
           <Navbar />
-          <Control onSort={this.onSort} sortBy={sortBy} sortValue={sortValue}  />
+          <Control 
+          onSort={this.onSort} sortBy={sortBy} sortValue={sortValue} 
+          onSearch = {this.onSearch}
+           />
           <section className="text-center mb-4">
             <div id="product" className="row wow fadeIn">
               {element}

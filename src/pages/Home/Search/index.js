@@ -18,6 +18,7 @@ class index extends Component {
     }
     onSearch =() =>{
             this.props.onSearch(this.state.keyword);
+            
     }
   render() {
     var {keyword} = this.state;

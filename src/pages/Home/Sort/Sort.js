@@ -17,6 +17,7 @@ class Sort extends Component {
             <button type="button" className="btn btn-sm btn-success" onClick={() =>this.props.onClick('price',-1) }>
               9$ -> 0$
             </button>
+            
           </div>
         </div>
       </div>
