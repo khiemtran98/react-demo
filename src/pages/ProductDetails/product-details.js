@@ -43,7 +43,7 @@ const ProductDetails = ({ product, setQuantity, addToCart }) => {
 
                         <form className="d-flex justify-content-left">
                             <input type="number" defaultValue='1' min='1' aria-label="Search" className="form-control" style={{ width: 100 }} onChange={setQuantity} />
-                            <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={(e) => {
+                            <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={e => {
                                 addToCart();
                                 e.preventDefault();
                                 alert('Thêm thành công vào giỏ hàng!')

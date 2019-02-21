@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Header from './components/Header/header';
+import Header from './components/Header';
 import Footer from './components/footer';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
@@ -9,7 +9,6 @@ import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
-
 
 class App extends Component {
   render() {
