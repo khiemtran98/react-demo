@@ -4,7 +4,6 @@ import Header from './header';
 
 class HeaderContainer extends Component {
     render() {
-        console.log("abcasasasas")
         let data = getCart();
         let cartQuantity = 0;
         if (data !== null) {

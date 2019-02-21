@@ -1,7 +1,7 @@
 import React from 'react';
 import CartItem from './cart-item';
 
-const CartItemContainer = ({ cart, onItemsChanged }) => {
+const CartItemsContainer = ({ cart, onItemsChanged }) => {
     let cartItems = [];
     if (cart.length > 0) {
         cart.forEach(element => {
@@ -16,4 +16,4 @@ const CartItemContainer = ({ cart, onItemsChanged }) => {
     </ul>
 }
 
-export default CartItemContainer;
+export default CartItemsContainer;

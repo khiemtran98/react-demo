@@ -28,15 +28,25 @@ export function addItem(item) {
     saveCart(cart);
 }
 
+export function changeItem(id, quantity) {
+    let cart = getCart();
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            cart[i].quantity = parseInt(quantity);
+            break;
+        }
+    }
+    saveCart(cart);
+}
+
 export function saveCart(cart) {
     // TODO: test
     localStorage.setItem("cart", JSON.stringify(cart));
     // localStorage.setItem("cart", "[" + JSON.stringify(item) + "]");
 }
 
-export function deleteCart(id) {
+export function deleteItem(id) {
     let cart = getCart();
     cart = cart.filter(x => x.id !== id);
-    console.log({ cart });
     saveCart(cart);
 }

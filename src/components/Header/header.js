@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap';
+import CartQuantity from './cart-quantity';
 
 const Header = ({ cartQuantity }) => {
     return (
@@ -43,7 +44,7 @@ const Header = ({ cartQuantity }) => {
                     <li className="nav">
                         <LinkContainer to='/cart'>
                             <Nav.Link className="nav-link waves-effect">
-                                <span className="badge red z-depth-1 mr-1">{cartQuantity}</span>
+                                <CartQuantity cartQuantity={cartQuantity} />
                                 <i className="fas fa-shopping-cart"></i>
                                 <span className="clearfix d-none d-sm-inline-block"> Giỏ hàng </span>
                             </Nav.Link>

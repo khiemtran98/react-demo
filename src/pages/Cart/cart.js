@@ -1,6 +1,6 @@
 import React from 'react';
 import CartHeader from './cart-header';
-import CartItems from './cart-item-container';
+import CartItems from './cart-items';
 import Submition from './submition';
 
 const Cart = ({

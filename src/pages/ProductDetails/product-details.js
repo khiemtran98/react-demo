@@ -42,10 +42,11 @@ const ProductDetails = ({ product, setQuantity, addToCart }) => {
                                 Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
 
                         <form className="d-flex justify-content-left">
-                            <input type="number" defaultValue='1' aria-label="Search" className="form-control" style={{ width: 100 }} onChange={setQuantity} />
+                            <input type="number" defaultValue='1' min='1' aria-label="Search" className="form-control" style={{ width: 100 }} onChange={setQuantity} />
                             <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={(e) => {
                                 addToCart();
                                 e.preventDefault();
+                                alert('Thêm thành công vào giỏ hàng!')
                             }}>Add to cart
                                     <i className="fas fa-shopping-cart ml-1"></i>
                             </button>

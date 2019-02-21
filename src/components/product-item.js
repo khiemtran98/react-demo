@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 
 class Product extends Component {
@@ -13,7 +12,9 @@ class Product extends Component {
                         <img src={this.props.data["img-url"]} className="card-img-top"
                             alt="" />
                         <LinkContainer to={url}>
-                            <div className="mask rgba-white-slight"></div>
+                            <a>
+                                <div className="mask rgba-white-slight"></div>
+                            </a>
                         </LinkContainer>
                         {/* <a href={url}> */}
                         {/* <div className="mask rgba-white-slight"></div> */}
@@ -24,19 +25,21 @@ class Product extends Component {
                         {/* <a href={url} className="grey-text">
                             <h5>{this.props.data["type"]}</h5>
                         </a> */}
-                        <LinkContainer to={url} className="grey-text">
-                            <h5>{this.props.data["type"]}</h5>
+                        <LinkContainer to={url}>
+                            <a className="grey-text">
+                                <h5>{this.props.data["type"]}</h5>
+                            </a>
                         </LinkContainer>
                         <h5>
                             <strong>
                                 {/* <a href={url} className="dark-grey-text">{this.props.data["name"]}
                                     <span className="badge badge-pill danger-color">NEW</span>
                                 </a> */}
-                                <LinkContainer to={url} className="dark-grey-text">
-                                    <NavItem>
+                                <LinkContainer to={url}>
+                                    <a className="dark-grey-text">
                                         {this.props.data["name"]}
                                         <span className="badge badge-pill danger-color">NEW</span>
-                                    </NavItem>
+                                    </a>
                                 </LinkContainer>
                             </strong>
                         </h5>
