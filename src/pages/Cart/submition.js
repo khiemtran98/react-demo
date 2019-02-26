@@ -10,7 +10,7 @@ const Submition = ({ totalAmount, onSubmit }) => {
                 {/* <a href="/checkout" className="btn btn-secondary btn-md waves-effect m-0" type="button" onClick={onSubmit}>Thanh toán</a> */}
 
                 <LinkContainer to="/checkout">
-                    <a className="btn btn-secondary btn-md waves-effect m-0" type="button" onClick={onSubmit}>Thanh toán</a>
+                    <a className="btn btn-secondary btn-md waves-effect m-0" type="button" onClick={onSubmit}>Đặt hàng</a>
                 </LinkContainer>
             </div>
         </div>

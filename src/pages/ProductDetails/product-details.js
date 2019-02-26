@@ -1,5 +1,6 @@
 import React from 'react';
 import RelatedProducts from './related-product';
+// import PopupClass from 'js-popup';
 
 const ProductDetails = ({ product, setQuantity, addToCart }) => {
     return <main className="mt-5 pt-4">
@@ -43,9 +44,13 @@ const ProductDetails = ({ product, setQuantity, addToCart }) => {
 
                         <form className="d-flex justify-content-left">
                             <input type="number" defaultValue='1' min='1' aria-label="Search" className="form-control" style={{ width: 100 }} onChange={setQuantity} />
-                            <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={(e) => {
+                            <button className="btn btn-primary btn-md my-0 p" type="submit" onClick={e => {
                                 addToCart();
                                 e.preventDefault();
+                                // Popup = new PopupClass();
+                                // let messageText = "Message text";
+                                // let messageName = "New message";
+                                // Popup.show(messageText, messageName);
                                 alert('Thêm thành công vào giỏ hàng!')
                             }}>Add to cart
                                     <i className="fas fa-shopping-cart ml-1"></i>

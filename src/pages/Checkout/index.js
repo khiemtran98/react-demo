@@ -76,7 +76,7 @@ class Checkout extends Component {
       <main className="mt-5 pt-4">
         <div className="container wow fadeIn">
 
-          <h2 className="my-5 h2 text-center">Checkout form</h2>
+          <h2 className="my-5 h2 text-center">Đặt hàng</h2>
 
           <div className="row">
 
