@@ -3,7 +3,7 @@ var data = [
         "id": 1,
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/1.jpg",
         "type": "Shirt",
-        "name": "Denim shirt",
+        "name": "Aenim shirt",
         "price": 120
     },
     {
@@ -25,13 +25,13 @@ var data = [
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/4.jpg",
         "type": "Outwear",
         "name": "Black jacket",
-        "price": 219
+        "price": 218
     },
     {
         "id": 5,
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/5.jpg",
         "type": "Shirt",
-        "name": "Denim shirt",
+        "name": "Benim shirt",
         "price": 120
     },
     {
@@ -60,20 +60,20 @@ var data = [
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/9.jpg",
         "type": "Outwear",
         "name": "Black jacket",
-        "price": 219
+        "price": 217
     },
     {
         "id": 10,
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/10.jpg",
         "type": "Shirt",
-        "name": "Denim shirt",
+        "name": "Cenim shirt",
         "price": 120
     },
     {
         "id": 11,
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/11.jpg",
         "type": "Shirt",
-        "name": "Denim shirt",
+        "name": "Eenim shirt",
         "price": 120
     },
     {
@@ -95,13 +95,13 @@ var data = [
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg",
         "type": "Outwear",
         "name": "Black jacket",
-        "price": 219
+        "price": 214
     },
     {
         "id": 15,
         "img-url": "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15.jpg",
         "type": "Shirt",
-        "name": "Denim shirt",
+        "name": "Yenim shirt",
         "price": 120
     }
 ]

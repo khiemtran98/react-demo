@@ -32,7 +32,6 @@ class Home extends Component {
   }
   render() {
     var { sortBy, sortValue, products,keyword } = this.state;
-
    
 
     if(keyword){
