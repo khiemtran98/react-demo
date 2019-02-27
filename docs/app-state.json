@@ -1,0 +1,30 @@
+{
+    "cart": {
+        "items": [
+            {
+                "product": {
+                    "name": ""
+                },
+                "quantity": 0,
+                "discount": 0
+            }
+        ],
+        "voucher": ""
+    },
+    "shipInfo": {
+        "name": {},
+        "email": {},
+        "address": {},
+        "phone": {}
+    },
+    "filter": {
+        "searchText": "",
+        "category": "",
+        "page": 0,
+        "order": ""
+    },
+    "products": [],
+    "ui": {
+        "showCartPopup": false
+    }
+}

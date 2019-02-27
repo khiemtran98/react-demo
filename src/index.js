@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux'
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux'
 import rootReducer from './reducers'
 
 const preloadedState = {
-    account: {
-        loggedIn: false
+    shoppingCart: {
+        quantity: 0
     },
-    user: {
-        name: ''
+    productDetailsPopup: {
+        popupShow: false
     }
 }
 

@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import shoppingCart from './shoppingCart';
-import accountReducer from './accountReducer';
-import userReducer from './userReducer';
+import productDetailsPopup from './product-details-popup';
 
 export default combineReducers({
-    shoppingCart,
-    account: accountReducer,
-    user: userReducer
+    cart: shoppingCart,
+    // shipInfo: shipInfoReducer,
+    // filter: filterReducer,
+    // products: productsReducer,
+    ui: productDetailsPopup
 })

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { addItem } from '../../services/cart';
 import { getProduct } from '../../services/product';
 import ProductDetails from './product-details';
+import { connect } from 'react-redux'
+import { addToCart } from "../../actions/shoppingCart";
 
 class ProductDetailsContainer extends Component {
     constructor(props) {
@@ -22,6 +24,7 @@ class ProductDetailsContainer extends Component {
     };
 
     addToCart() {
+        // 
         let product = getProduct(this.props.location.search);
         let item = {
             "id": product.id,
@@ -32,11 +35,18 @@ class ProductDetailsContainer extends Component {
         };
 
         addItem(item);
+        this.props.updateQuantityProp(product, parseInt(this.state.quantity));
     };
     render() {
         let product = getProduct(this.props.location.search);
-        return <ProductDetails product={product} setQuantity={this.setQuantity} addToCart={this.addToCart} />
+        return <ProductDetails product={product} setQuantity={this.setQuantity} addToCart={() => this.addToCart()} />
     };
 };
 
-export default ProductDetailsContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        updateQuantityProp: (product, quantity) => dispatch(addToCart(product, quantity))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(ProductDetailsContainer);

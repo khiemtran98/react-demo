@@ -5,11 +5,6 @@ import Paging from "./paging";
 import Product from "../../components/product-item";
 import Control from "./Control";
 import { searchProducts } from "../../services/product";
-import { Button } from "react-bootstrap";
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { loginSuccess } from "../../actions/account";
-import { updateName } from "../../actions/user";
 
 class Home extends Component {
   constructor(props) {
@@ -38,7 +33,7 @@ class Home extends Component {
     });
   }
   render() {
-    var { sortBy, sortValue, products, keyword, sortOrder } = this.state;
+    let { sortBy, sortValue, products, keyword, sortOrder } = this.state;
     // const products = searchProducts(keyword, sortOrder);
 
     if (keyword) {
@@ -66,16 +61,10 @@ class Home extends Component {
       return <Product data={e} key={e.id} />;
     });
 
-    console.log(this.props)
-
     return (
       <main style={{ marginTop: 100 }}>
         <div className="container">
           <Navbar />
-          <Button onClick={() => {
-            this.props.updateNameProp('new name');
-
-          }}>Demo redux action</Button>
           <div>{this.props.userName}</div>
           <Control
             onSort={this.onSort} sortBy={sortBy} sortValue={sortValue}
@@ -93,19 +82,4 @@ class Home extends Component {
   }
 }
 
-// App state --> component props
-const mapStateToProps = (state) => {
-  return {
-    account: state.account,
-    userName: state.user.name
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    notifyLoginSuccess: () => dispatch(loginSuccess()),
-    updateNameProp: name => dispatch(updateName(name))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
