@@ -1,10 +1,16 @@
-const ProductDetailsPopup = (state = [], action) => {
+import * as actionType from '../actions/type'
+
+const initialCartState = {
+    popupShow: false
+}
+
+const ProductDetailsPopup = (state = initialCartState, action) => {
     switch (action.type) {
-        case 'SHOW_POPUP':
+        case actionType.PD_ADD_TO_CART_SUCCESSFUL:
             return {
                 ...state, popupShow: true
             }
-        case 'CLOSE_POPUP':
+        case actionType.PD_ADD_TO_CART_SUCCESSFUL_CONFIRMED:
             return {
                 ...state, popupShow: false
             }

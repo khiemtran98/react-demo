@@ -13,3 +13,10 @@ export const removeFromCart = productId => ({
         productId
     }
 })
+
+export const modifyCartItem = (product, quantity) => ({
+    type: actionType.SC_MODIFY_CART_ITEM,
+    payload: {
+        product, quantity
+    }
+})

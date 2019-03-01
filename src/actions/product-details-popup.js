@@ -1,7 +1,9 @@
+import * as actionType from './type'
+
 export const ShowPopup = () => ({
-    type: 'SHOW_POPUP'
+    type: actionType.PD_ADD_TO_CART_SUCCESSFUL
 })
 
 export const ClosePopup = () => ({
-    type: 'CLOSE_POPUP'
+    type: actionType.PD_ADD_TO_CART_SUCCESSFUL_CONFIRMED
 })

@@ -5,7 +5,13 @@ export function getCart() {
     //       cart: response.data.cart
     //   });
     // })
-    return JSON.parse(localStorage.getItem('cart'));
+    // return JSON.parse(localStorage.getItem('cart'));
+}
+
+export function getCartQuantity(cart) {
+    return cart.items.reduce((total, x) => {
+        return total + x.quantity
+    }, 0);
 }
 
 export function addItem(item) {

@@ -4,6 +4,7 @@ import { getProduct } from '../../services/product';
 import ProductDetails from './product-details';
 import { connect } from 'react-redux'
 import { addToCart } from "../../actions/shoppingCart";
+import { ShowPopup, ClosePopup } from "../../actions/product-details-popup";
 
 class ProductDetailsContainer extends Component {
     constructor(props) {
@@ -36,17 +37,26 @@ class ProductDetailsContainer extends Component {
 
         addItem(item);
         this.props.updateQuantityProp(product, parseInt(this.state.quantity));
+        this.props.ShowPopup();
     };
     render() {
         let product = getProduct(this.props.location.search);
-        return <ProductDetails product={product} setQuantity={this.setQuantity} addToCart={() => this.addToCart()} />
+        return <ProductDetails product={product} setQuantity={this.setQuantity} addToCart={() => this.addToCart()} popupShow={this.props.popupShow} closePopup={this.props.ClosePopup} />
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        updateQuantityProp: (product, quantity) => dispatch(addToCart(product, quantity))
+        popupShow: state.ui.popupShow
     }
 }
 
-export default connect(null, mapDispatchToProps)(ProductDetailsContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        updateQuantityProp: (product, quantity) => dispatch(addToCart(product, quantity)),
+        ShowPopup: () => dispatch(ShowPopup()),
+        ClosePopup: () => dispatch(ClosePopup())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailsContainer);
