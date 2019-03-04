@@ -12,7 +12,6 @@ const Cart = ({
     return (
         <main className="mt-5 pt-4">
             <div className="container wow fadeIn">
-
                 <div className="my-5 h2 text-center"></div>
                 <div className="col-md-12 mb-4"> {/* root */}
                     <CartHeader totalQuantity={totalQuantity} />

@@ -29,27 +29,27 @@ class CartContainer extends React.Component {
         }
     };
 
-    calculateTotal(cart) {
+    calculateTotal(items) {
         let result = 0;
-        cart.forEach(element => {
-            result += parseInt(element.quantity) * parseInt(element.price);
+        items.forEach(element => {
+            result += parseInt(element.quantity) * parseInt(element.product.price);
         })
 
         return result;
     }
 
-    calculateTotalQuantity(cart) {
+    calculateTotalQuantity(items) {
         // return (cart && cart.length > 0 && cart.reduce((y, x) => parseInt(y.quantity) + parseInt(x.quantity))) || 0;
         let productQuantity = 0;
-        cart.forEach(element => {
+        items.forEach(element => {
             productQuantity += parseInt(element.quantity);
         });
         return productQuantity;
     }
 
     render() {
-        const totalAmount = this.calculateTotal(this.state.cart);
-        const totalQuantity = this.calculateTotalQuantity(this.state.cart);
+        const totalAmount = this.calculateTotal(this.props.items);
+        const totalQuantity = this.calculateTotalQuantity(this.props.items);
         return <>
             <Cart totalQuantity={totalQuantity}
                 totalAmount={totalAmount}
@@ -75,10 +75,16 @@ class CartContainer extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        items: state.cart.items
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         removeItem: productID => dispatch(removeFromCart(productID))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CartContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
