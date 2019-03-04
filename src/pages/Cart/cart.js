@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
 import CartHeader from './cart-header';
 import CartItems from './cart-items';
 import Submition from './submition';
@@ -8,8 +7,7 @@ const Cart = ({
     totalQuantity,
     cart,
     totalAmount,
-    onSubmit,
-    onItemsChanged
+    onDeleteItem,
 }) => {
     return (
         <main className="mt-5 pt-4">
@@ -18,26 +16,9 @@ const Cart = ({
                 <div className="my-5 h2 text-center"></div>
                 <div className="col-md-12 mb-4"> {/* root */}
                     <CartHeader totalQuantity={totalQuantity} />
-                    <CartItems cart={cart} onItemsChanged={onItemsChanged} />
-
-                    {/* <Modal show={removeItemPopupShow} onHide={cancelRemoveItem}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Xoá sản phẩm</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Bạn có muốn xoá sản phẩm khỏi giỏ hàng?</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={cancelRemoveItem}>
-                                Huỷ bỏ
-                            </Button>
-                            <Button variant="primary" onClick={confirmRemoveItem}>
-                                Xoá sản phẩm
-                            </Button>
-                        </Modal.Footer>
-                    </Modal> */}
-
-                    <Submition totalAmount={totalAmount} onSubmit={onSubmit} />
+                    <CartItems cart={cart} removeItem={onDeleteItem} />
+                    <Submition totalAmount={totalAmount} />
                 </div>
-
             </div>
         </main>
     )

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartItem from './cart-item';
-import { removeFromCart, modifyCartItem } from "../../actions/shoppingCart";
+import { modifyCartItem } from "../../actions/shoppingCart";
 
 const CartItemsContainer = (/*{ cart, onItemsChanged }*/ props) => {
     let cartItems = [];
@@ -9,7 +9,6 @@ const CartItemsContainer = (/*{ cart, onItemsChanged }*/ props) => {
         props.cart.forEach(element => {
             cartItems.push(<CartItem
                 data={element}
-                onItemsChanged={props.onItemsChanged}
                 modifyCartItem={(product, quantity) => props.modifyCartItem(product, quantity)}
                 removeItem={productID => props.removeItem(productID)} />)
         });
@@ -31,7 +30,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         modifyCartItem: (product, quantity) => dispatch(modifyCartItem(product, quantity)),
-        removeItem: productID => dispatch(removeFromCart(productID))
+        // removeItem: productID => dispatch(removeFromCart(productID))
     }
 }
 

@@ -1,13 +1,9 @@
 import React from 'react';
 // import { changeItem, deleteItem } from '../../services/cart';
 
-class CartItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        const { data, onItemsChanged, modifyCartItem, removeItem } = this.props;
-        return <li className="list-group-item d-flex justify-content-between lh-condensed">
+export default function CartItem({ data, modifyCartItem, removeItem }) {
+    return (
+        <li className="list-group-item d-flex justify-content-between lh-condensed">
             <div className="container">
                 <div className="row">
                     <div className="col">
@@ -28,13 +24,10 @@ class CartItem extends React.Component {
                         <button className="btn-danger" onClick={() => {
                             // deleteItem(data["id"]);
                             removeItem(data.product.id);
-                            onItemsChanged(data["id"]);
                         }}></button>
                     </div>
                 </div>
             </div>
         </li>
-    }
+    )
 }
-
-export default CartItem;
