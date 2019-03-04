@@ -35,7 +35,6 @@ class Form extends React.Component {
 
                     <form className="card-body" onSubmit={e => {
                         e.preventDefault();
-                        alert("Đặt hàng thành công!")
                         this.props.submit(this.state);
                     }}>
 

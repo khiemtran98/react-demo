@@ -16,6 +16,9 @@ const preloadedState = {
     },
     checkout: {
 
+    },
+    submitCheckoutPopup: {
+        popupShow: false
     }
 }
 

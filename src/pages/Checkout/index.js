@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Modal } from 'react-bootstrap';
 import Form from './form';
 import { SubmitCheckout } from '../../actions/checkout';
 // const axios = require('axios');
 
 class Checkout extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     cart: [],
-  //     amount: 0,
-  //     total: 0
-  //   }
-  //   this.calculateAmount = this.calculateAmount.bind(this);
-  //   this.calculateTotal = this.calculateTotal.bind(this);
-  //   this.deleteCart = this.deleteCart.bind(this);
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      // cart: [],
+      // amount: 0,
+      // total: 0
+      popupShow: false
+    }
+    // this.handleShow = this.handleShow.bind(this);
+    // this.calculateAmount = this.calculateAmount.bind(this);
+    // this.calculateTotal = this.calculateTotal.bind(this);
+    // this.deleteCart = this.deleteCart.bind(this);
+  };
 
   // componentWillMount() {
   //   // axios.get('./cart.json')
@@ -66,6 +69,25 @@ class Checkout extends Component {
   //   })
   // }
 
+  // handleShow() {
+  //   this.setState({
+  //     popupShow: true
+  //   })
+  // }
+
+  handleClose() {
+    this.setState({
+      popupShow: false
+    })
+  }
+
+  Submit(info) {
+    this.props.saveInfo(info);
+    this.setState({
+      popupShow: true
+    })
+  }
+
   render() {
     // let cartItems = [];
     // if (this.state.cart.length > 0) {
@@ -75,27 +97,42 @@ class Checkout extends Component {
     // }
 
     return (
-      <main className="mt-5 pt-4">
-        <div className="container wow fadeIn">
+      <>
+        <main className="mt-5 pt-4">
+          <div className="container wow fadeIn">
 
-          <h2 className="my-5 h2 text-center">Đặt hàng</h2>
+            <h2 className="my-5 h2 text-center">Đặt hàng</h2>
 
-          <div className="row">
+            <div className="row">
 
-            <Form submit={this.props.submit} />
+              <Form submit={info => this.Submit(info)} />
+
+            </div>
 
           </div>
+        </main>
 
-        </div>
-      </main>
+        <Modal
+          size="sm"
+          show={this.state.popupShow}
+          onHide={() => this.handleClose()}
+          aria-labelledby="example-modal-sizes-title-sm"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-modal-sizes-title-sm">
+              Store
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Đặt hàng thành công!</Modal.Body>
+        </Modal>
+      </>
     )
   }
 };
 
-
 const mapDispatchToProps = dispatch => {
   return {
-    submit: info => dispatch(SubmitCheckout(info))
+    saveInfo: info => dispatch(SubmitCheckout(info))
   }
 }
 
