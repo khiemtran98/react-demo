@@ -7,6 +7,7 @@ import Control from "./Control";
 import { searchProducts } from "../../services/product";
 import { connect } from "react-redux";
 
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,7 @@ class Home extends Component {
   }
   render() {
     let { sortBy, sortValue, products } = this.state;
+
     // const products = searchProducts(keyword, sortOrder);
     console.log(this.state.keyword);
     if (this.props.keyword) {
@@ -63,7 +65,7 @@ class Home extends Component {
       <main style={{ marginTop: 100 }}>
         <div className="container">
           <Navbar />
-          {/* <div>{this.props.userName}</div> */}
+
           <Control
             onSort={this.onSort} sortBy={sortBy} sortValue={sortValue}
             // onSearch={this.onSearch}
@@ -79,6 +81,7 @@ class Home extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     keyword: state.Control.keyword

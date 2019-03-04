@@ -13,6 +13,13 @@ const preloadedState = {
     },
     productDetailsPopup: {
         popupShow: false
+
+    },
+    checkout: {
+
+    },
+    submitCheckoutPopup: {
+        popupShow: false
     }
 }
 
