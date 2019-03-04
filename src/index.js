@@ -13,6 +13,9 @@ const preloadedState = {
     },
     productDetailsPopup: {
         popupShow: false
+    },
+    checkout: {
+
     }
 }
 

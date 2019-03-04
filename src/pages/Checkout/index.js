@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Form from './form';
+import { SubmitCheckout } from '../../actions/checkout';
 // const axios = require('axios');
 
 class Checkout extends Component {
@@ -80,7 +82,7 @@ class Checkout extends Component {
 
           <div className="row">
 
-            <Form />
+            <Form submit={this.props.submit} />
 
           </div>
 
@@ -90,4 +92,11 @@ class Checkout extends Component {
   }
 };
 
-export default Checkout;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submit: info => dispatch(SubmitCheckout(info))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Checkout);

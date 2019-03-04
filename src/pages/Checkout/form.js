@@ -1,4 +1,5 @@
 import React from 'react';
+import { SubmitCheckout } from '../../actions/checkout';
 
 class Form extends React.Component {
     constructor(props) {
@@ -15,9 +16,10 @@ class Form extends React.Component {
             zip: null,
             sameShippingAddressBillingAddress: false,
             saveInformationNextTime: false,
-            creditCard: true,
-            debitCard: false,
-            paypal: false,
+            // creditCard: true,
+            // debitCard: false,
+            // paypal: false,
+            paymentMethod: 'Credit card',
             nameOnCard: '',
             creditCardNumber: null,
             expiration: null,
@@ -31,14 +33,18 @@ class Form extends React.Component {
 
                 <div className="card">
 
-                    <form className="card-body">
+                    <form className="card-body" onSubmit={e => {
+                        e.preventDefault();
+                        alert("Đặt hàng thành công!")
+                        this.props.submit(this.state);
+                    }}>
 
                         <div className="row">
 
                             <div className="col-md-6 mb-2">
 
                                 <div className="md-form ">
-                                    <input type="text" id="firstName" className="form-control" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })} />
+                                    <input type="text" id="firstName" className="form-control" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })} required />
                                     <label htmlFor="firstName" className="">First name</label>
                                 </div>
 
@@ -47,7 +53,7 @@ class Form extends React.Component {
                             <div className="col-md-6 mb-2">
 
                                 <div className="md-form">
-                                    <input type="text" id="lastName" className="form-control" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })} />
+                                    <input type="text" id="lastName" className="form-control" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })} required />
                                     <label htmlFor="lastName" className="">Last name</label>
                                 </div>
 
@@ -59,16 +65,16 @@ class Form extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">@</span>
                             </div>
-                            <input type="text" className="form-control py-0" aria-describedby="basic-addon1" value={this.state.nickName} onChange={e => this.setState({ nickName: e.target.value })} />
+                            <input type="text" className="form-control py-0" aria-describedby="basic-addon1" value={this.state.nickName} onChange={e => this.setState({ nickName: e.target.value })} required />
                         </div>
 
                         <div className="md-form mb-5">
-                            <input type="text" id="email" className="form-control" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
+                            <input type="text" id="email" className="form-control" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} required />
                             <label htmlFor="email" className="">Email (optional)</label>
                         </div>
 
                         <div className="md-form mb-5">
-                            <input type="text" id="address" className="form-control" value={this.state.address1} onChange={e => this.setState({ address1: e.target.value })} />
+                            <input type="text" id="address" className="form-control" value={this.state.address1} onChange={e => this.setState({ address1: e.target.value })} required />
                             <label htmlFor="address" className="">Address</label>
                         </div>
 
@@ -148,42 +154,66 @@ class Form extends React.Component {
 
                         <div className="d-block my-3">
                             <div className="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" checked={this.state.creditCard} onChange={e => {
-                                    if (!this.state.creditCard) {
-                                        this.setState({
-                                            creditCard: true,
-                                            debitCard: false,
-                                            paypal: false
-                                        })
-                                    }
-                                }
-                                } required />
+                                <input id="credit" name="paymentMethod" type="radio" className="custom-control-input"
+                                    onChange={e => {
+                                        if (e.target.checked) {
+                                            this.setState({
+                                                paymentMethod: 'Credit card'
+                                            })
+                                        }
+                                    }}
+                                    // checked={this.state.creditCard} onChange={e => {
+                                    //     if (!this.state.creditCard) {
+                                    //         this.setState({
+                                    //             creditCard: true,
+                                    //             debitCard: false,
+                                    //             paypal: false
+                                    //         })
+                                    //     }
+                                    // }}
+                                    required />
                                 <label className="custom-control-label" htmlFor="credit">Credit card</label>
                             </div>
                             <div className="custom-control custom-radio">
-                                <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" checked={this.state.debitCard} onChange={e => {
-                                    if (!this.state.debitCard) {
-                                        this.setState({
-                                            debitCard: true,
-                                            creditCard: false,
-                                            paypal: false
-                                        })
-                                    }
-                                }
-                                } required />
+                                <input id="debit" name="paymentMethod" type="radio" className="custom-control-input"
+                                    onChange={e => {
+                                        if (e.target.checked) {
+                                            this.setState({
+                                                paymentMethod: 'Debit card'
+                                            })
+                                        }
+                                    }}
+                                    // checked={this.state.debitCard} onChange={e => {
+                                    //     if (!this.state.debitCard) {
+                                    //         this.setState({
+                                    //             debitCard: true,
+                                    //             creditCard: false,
+                                    //             paypal: false
+                                    //         })
+                                    //     }
+                                    // }} 
+                                    required />
                                 <label className="custom-control-label" htmlFor="debit">Debit card</label>
                             </div>
                             <div className="custom-control custom-radio">
-                                <input id="paypal" name="paymentMethod" type="radio" className="custom-control-input" checked={this.state.paypal} onChange={e => {
-                                    if (!this.state.paypal) {
-                                        this.setState({
-                                            paypal: true,
-                                            creditCard: false,
-                                            debitCard: false
-                                        })
-                                    }
-                                }
-                                } required />
+                                <input id="paypal" name="paymentMethod" type="radio" className="custom-control-input"
+                                    onChange={e => {
+                                        if (e.target.checked) {
+                                            this.setState({
+                                                paymentMethod: 'Paypal'
+                                            })
+                                        }
+                                    }}
+                                    // checked={this.state.paypal} onChange={e => {
+                                    //     if (!this.state.paypal) {
+                                    //         this.setState({
+                                    //             paypal: true,
+                                    //             creditCard: false,
+                                    //             debitCard: false
+                                    //         })
+                                    //     }
+                                    // }} 
+                                    required />
                                 <label className="custom-control-label" htmlFor="paypal">Paypal</label>
                             </div>
                         </div>
@@ -221,11 +251,7 @@ class Form extends React.Component {
                             </div>
                         </div>
                         <hr className="mb-4" />
-                        <button className="btn btn-primary btn-lg btn-block" type="submit" onClick={e => {
-                            e.preventDefault();
-                            alert("Đặt hàng thành công!")
-                            console.log(this.state);
-                        }}>Continue to checkout</button>
+                        <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
 
                     </form>
 
