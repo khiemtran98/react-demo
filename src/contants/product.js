@@ -1,3 +1,5 @@
 export const Order = {
-    a: 'ddd',
+    alphabet: 'alphabet',
+    alphabetDesc = 'alphabetDesc',
+    price: 'price'
 }

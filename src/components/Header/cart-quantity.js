@@ -1,7 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getCartQuantity } from '../../services/cart';
 
-const CartQuantity = ({ cartQuantity }) => {
-    return <span className="badge red z-depth-1 mr-1">{cartQuantity}</span>
+const CartQuantity = (props) => {
+    return <span className="badge red z-depth-1 mr-1">{props.quantity}</span>
 }
 
-export default CartQuantity;
+const mapStateToProps = (state) => {
+    return {
+        quantity: getCartQuantity(state.cart)
+    }
+}
+
+export default connect(mapStateToProps)(CartQuantity);

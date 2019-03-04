@@ -44,7 +44,7 @@ const Header = ({ cartQuantity }) => {
                     <li className="nav">
                         <LinkContainer to='/cart'>
                             <Nav.Link className="nav-link waves-effect">
-                                <CartQuantity cartQuantity={cartQuantity} />
+                                <CartQuantity />
                                 <i className="fas fa-shopping-cart"></i>
                                 <span className="clearfix d-none d-sm-inline-block"> Giỏ hàng </span>
                             </Nav.Link>

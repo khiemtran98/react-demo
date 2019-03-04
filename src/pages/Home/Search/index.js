@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
-class index extends Component {
+//  add
+import { connect } from "react-redux";
+import { SearchSuccess } from "../../../actions/search";
+
+//end
+class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +22,7 @@ class index extends Component {
     });
   };
   onSearch = () => {
-    this.props.onSearch(this.state.keyword);
+    this.props.SearchFunc(this.state.keyword);
   };
   render() {
     var { keyword } = this.state;
@@ -51,14 +56,28 @@ class index extends Component {
           </div>
         </div>
 
-        {/* <form className="form-inline">
-                                <div className="md-form my-0">
-                                    <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                                </div>
-                            </form> */}
+  
       </div>
     );
   }
 }
 
-export default index;
+//add
+const mapStateToProps = state => {
+  return {
+    keyword: state.Control.keyword
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    SearchFunc: key => dispatch(SearchSuccess(key))
+  };
+};
+
+//end
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchContainer);

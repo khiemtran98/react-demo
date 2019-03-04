@@ -5,11 +5,7 @@ import Paging from "./paging";
 import Product from "../../components/product-item";
 import Control from "./Control";
 import { searchProducts } from "../../services/product";
-import { Button } from "react-bootstrap";
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { loginSuccess } from "../../actions/account";
-import { updateName } from "../../actions/user";
+import { connect } from "react-redux";
 
 class Home extends Component {
   constructor(props) {
@@ -17,8 +13,8 @@ class Home extends Component {
     this.state = {
       sortBy: "name",
       sortValue: 1,
-      products: [],
-      keyword: ""
+      products: []
+      
     };
   }
   onSort = (sortBy, sortValue) => {
@@ -27,24 +23,20 @@ class Home extends Component {
       sortValue: sortValue
     });
   };
-  onSearch = (keyword) => {
-    this.setState({
-      keyword: keyword
-    });
-  }
+
   componentDidMount() {
     this.setState({
       products: Data
     });
   }
   render() {
-    var { sortBy, sortValue, products,keyword } = this.state;
-    var { sortBy, sortValue, products, keyword, sortOrder } = this.state;
+    let { sortBy, sortValue, products } = this.state;
     // const products = searchProducts(keyword, sortOrder);
-
-    if (keyword) {
+    console.log(this.state.keyword);
+    if (this.props.keyword) {
       products = products.filter((data) => {
-        return data.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
+        return data.name.toLowerCase().indexOf(this.props.keyword.toLowerCase()) !== -1;
+      
       });
     }
 
@@ -67,20 +59,14 @@ class Home extends Component {
       return <Product data={e} key={e.id} />;
     });
 
-    console.log(this.props)
-
     return (
       <main style={{ marginTop: 100 }}>
         <div className="container">
           <Navbar />
-          <Button onClick={() => {
-            this.props.updateNameProp('new name');
-
-          }}>Demo redux action</Button>
-          <div>{this.props.userName}</div>
+          {/* <div>{this.props.userName}</div> */}
           <Control
             onSort={this.onSort} sortBy={sortBy} sortValue={sortValue}
-            onSearch={this.onSearch}
+            // onSearch={this.onSearch}
           />
           <section className="text-center mb-4">
             <div id="product" className="row wow fadeIn">
@@ -93,20 +79,9 @@ class Home extends Component {
     );
   }
 }
-
-// App state --> component props
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    account: state.account,
-    userName: state.user.name
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    notifyLoginSuccess: () => dispatch(loginSuccess()),
-    updateNameProp: name => dispatch(updateName(name))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+    keyword: state.Control.keyword
+  };
+};
+export default connect(mapStateToProps)(Home);

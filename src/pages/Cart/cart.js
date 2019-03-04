@@ -7,8 +7,7 @@ const Cart = ({
     totalQuantity,
     cart,
     totalAmount,
-    onSubmit,
-    onItemsChanged
+    onDeleteItem,
 }) => {
     return (
         <main className="mt-5 pt-4">
@@ -17,10 +16,9 @@ const Cart = ({
                 <div className="my-5 h2 text-center"></div>
                 <div className="col-md-12 mb-4"> {/* root */}
                     <CartHeader totalQuantity={totalQuantity} />
-                    <CartItems cart={cart} onItemsChanged={onItemsChanged} />
-                    <Submition totalAmount={totalAmount} onSubmit={onSubmit} />
+                    <CartItems cart={cart} removeItem={onDeleteItem} />
+                    <Submition totalAmount={totalAmount} />
                 </div>
-
             </div>
         </main>
     )
