@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-
-//  add
 import { connect } from "react-redux";
 import { SearchSuccess } from "../../../actions/search";
 
-//end
 class SearchContainer extends Component {
   constructor(props) {
     super(props);
@@ -21,9 +18,11 @@ class SearchContainer extends Component {
       [name]: value
     });
   };
+
   onSearch = () => {
     this.props.SearchFunc(this.state.keyword);
   };
+
   render() {
     var { keyword } = this.state;
     return (
@@ -56,7 +55,7 @@ class SearchContainer extends Component {
           </div>
         </div>
 
-  
+
       </div>
     );
   }

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Sort from './Sort';
-class index extends Component {
+
+class SortContainer extends Component {
   render() {
-    return <Sort onClick={(sortBy, sortValue) => {
-        this.props.onSort(sortBy, sortValue);
-      }}/>;
+    return <Sort onClick={(sortBy, sortOrder) => {
+      this.props.onSort(sortBy, sortOrder);
+    }} />;
   }
 }
 
-export default index;
+export default SortContainer;

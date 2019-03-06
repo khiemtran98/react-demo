@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { addItem } from '../../services/cart';
-import { getProduct } from '../../services/product';
+import { getProductByID } from '../../services/product';
 import ProductDetails from './product-details';
 import { connect } from 'react-redux'
 import { addToCart } from "../../actions/shoppingCart";
@@ -26,7 +26,7 @@ class ProductDetailsContainer extends Component {
 
     addToCart() {
         // 
-        let product = getProduct(this.props.location.search);
+        let product = getProductByID(this.props.location.search);
         let item = {
             "id": product.id,
             "type": product.type,
@@ -40,7 +40,7 @@ class ProductDetailsContainer extends Component {
         this.props.ShowPopup();
     };
     render() {
-        let product = getProduct(this.props.location.search);
+        let product = getProductByID(this.props.location.search);
         return <ProductDetails product={product} setQuantity={this.setQuantity} addToCart={() => this.addToCart()} popupShow={this.props.popupShow} closePopup={this.props.ClosePopup} />
     };
 };
