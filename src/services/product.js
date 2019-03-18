@@ -1,4 +1,5 @@
 import Data from '../components/data';
+import { getProducts as getProductAPI } from '../api/product'
 const queryString = require('query-string');
 
 export function getProductByID(url) {
@@ -20,8 +21,11 @@ export function searchProducts(keyword, order) {
     return [];
 }
 
-export function getData(keyword, sortBy, sortOrder) {
-    let products = Data;
+export async function getData(keyword, sortBy, sortOrder) {
+    let response = await getProductAPI();
+    console.log({ products });
+    let products = response.data;
+
     if (keyword) {
         products = products.filter((data) => data.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1);
     }
@@ -41,13 +45,20 @@ export function getData(keyword, sortBy, sortOrder) {
             });
             break;
     }
+
     return products;
 }
 
 
-export function getProducts(keyword, sortBy, sortOrder, selectedPage, pageSize) {
+export async function getProducts(keyword, sortBy, sortOrder, selectedPage, pageSize) {
 
-    let productData = getData(keyword, sortBy, sortOrder);
+    let productData = await getData(keyword, sortBy, sortOrder);
+    console.log({ productData });
+
+    if (!productData) return {
+        products: [],
+        numOfPages: 0
+    };
 
     const numOfPages = Math.ceil(productData.length / pageSize);
     const filteredProducts = productData.slice((selectedPage - 1) * pageSize, selectedPage * pageSize);

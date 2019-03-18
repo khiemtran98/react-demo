@@ -12,17 +12,23 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productsData: [],
       sortBy: null,
       sortOrder: 1,
-      selectedPage: 1
+      selectedPage: 1,
+      data: {
+        products: [],
+        numOfPages: 0
+      }
     };
   }
 
   componentDidMount() {
-    this.setState({
-      productsData: Data
-    });
+    const pageSize = 8;
+    let { keyword } = this.props;
+    let { sortBy, sortOrder, selectedPage } = this.state;
+    getProducts(keyword, sortBy, sortOrder, selectedPage, pageSize).then(data => {
+      this.setState({ data })
+    })
   }
 
   onSort = (sortBy, sortOrder) => {
@@ -33,16 +39,16 @@ class Home extends Component {
   };
 
   render() {
-    let { keyword } = this.props;
-    let { sortBy, sortOrder, selectedPage } = this.state;
+    // let { keyword } = this.props;
+    // let { sortBy, sortOrder, selectedPage } = this.state;
 
     // let productData = getData(keyword, sortBy, sortOrder);
 
     // // Need to refactor
-    const pageSize = 8;
+    // const pageSize = 8;
     // const filteredProducts = productData.slice((selectedPage - 1) * pageSize, selectedPage * pageSize);
 
-    const data = getProducts(keyword, sortBy, sortOrder, selectedPage, pageSize);
+    const data = this.state.data;
     const numOfPages = data.numOfPages;
     // Data lower than function
     let products = data.products.map(e => <Product data={e} key={e.id} />);
@@ -50,7 +56,7 @@ class Home extends Component {
     return (
       <main style={{ marginTop: 100 }}>
         <div className="container">
-          <Navbar />
+          {/* <Navbar /> */}
           <Control onSort={this.onSort} />
           <section className="text-center mb-4">
             <div id="product" className="row wow fadeIn">
