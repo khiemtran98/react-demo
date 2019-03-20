@@ -1,29 +1,33 @@
 import Data from '../components/data';
-import { getProducts as getProductAPI } from '../api/product'
+import { getProducts as getProductAPI, getProductsById as getProductsByIdAPI } from '../api/product'
 const queryString = require('query-string');
 
-export function getProductByID(url) {
-    const parsed = queryString.parse(url);
-    let [product] = Data.filter(element => element["id"] === parseInt(parsed.id));
-    return product;
-};
+// export function getProductByID(url) {
+//     const parsed = queryString.parse(url);
+//     let [product] = Data.filter(element => element["id"] === parseInt(parsed.id));
+//     return product;
+// };
 
-export function searchProducts(keyword, order) {
-    // TODO:
-    // order values:
-    // anphabete_asc
-    // anphabete_desc
-    // price_asc
-    // price_desc
-    // step
-    // get data from mock data
-    // search, order
-    return [];
+export async function getProductsById(id) {
+    let response = await getProductsByIdAPI(id);
+    return response.data;
 }
+
+// export function searchProducts(keyword, order) {
+//     // TODO:
+//     // order values:
+//     // anphabete_asc
+//     // anphabete_desc
+//     // price_asc
+//     // price_desc
+//     // step
+//     // get data from mock data
+//     // search, order
+//     return [];
+// }
 
 export async function getData(keyword, sortBy, sortOrder) {
     let response = await getProductAPI();
-    console.log({ products });
     let products = response.data;
 
     if (keyword) {

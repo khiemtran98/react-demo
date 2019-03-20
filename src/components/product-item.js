@@ -3,7 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 class Product extends Component {
     render() {
-        let url = "/products?id=" + this.props.data["id"];
+        let url = "/products/" + this.props.data["id"];
         return (
             <div className="col-lg-3 col-md-6 mb-4">
                 <div className="card">

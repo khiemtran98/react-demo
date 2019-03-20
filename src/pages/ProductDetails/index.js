@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { addItem } from '../../services/cart';
-import { getProductByID } from '../../services/product';
+import { getProductsById } from '../../services/product';
 import ProductDetails from './product-details';
 import { connect } from 'react-redux'
 import { addToCart } from "../../actions/shoppingCart";
@@ -10,7 +10,8 @@ class ProductDetailsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quantity: 1
+            quantity: 1,
+            product: {}
         }
         this.setQuantity = this.setQuantity.bind(this);
         this.addToCart = this.addToCart.bind(this);
@@ -26,7 +27,7 @@ class ProductDetailsContainer extends Component {
 
     addToCart() {
         // 
-        let product = getProductByID(this.props.location.search);
+        let product = getProductsById(this.props.match.params.id);
         let item = {
             "id": product.id,
             "type": product.type,
@@ -40,8 +41,14 @@ class ProductDetailsContainer extends Component {
         this.props.ShowPopup();
     };
     render() {
-        let product = getProductByID(this.props.location.search);
-        return <ProductDetails product={product} setQuantity={this.setQuantity} addToCart={() => this.addToCart()} popupShow={this.props.popupShow} closePopup={this.props.ClosePopup} />
+        // let product = getProductByID(this.props.location.search);
+        let product = {}
+        getProductsById(this.props.match.params.id).then(data => {
+            this.setState({
+                product: data[0]
+            })
+        });
+        return <ProductDetails product={this.state.product} setQuantity={this.setQuantity} addToCart={() => this.addToCart()} popupShow={this.props.popupShow} closePopup={this.props.ClosePopup} />
     };
 };
 
