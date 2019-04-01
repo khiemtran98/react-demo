@@ -9,7 +9,7 @@ class Product extends Component {
                 <div className="card">
 
                     <div className="view overlay">
-                        <img src={this.props.data["img-url"]} className="card-img-top" style={{ minHeight: 382 }}
+                        <img src={this.props.data["img_url"]} className="card-img-top" style={{ minHeight: 382 }}
                             alt="" />
                         <LinkContainer to={url}>
                             <a>

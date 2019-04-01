@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function getProducts() {
-    return axios.get('https://projectapi1.herokuapp.com/api/products/', {
+    return axios.get('http://localhost:4000/', {
         // headers: {
         //     'Access-Control-Allow-Origin': '*',
         //     'Content-Type': 'application/json',
